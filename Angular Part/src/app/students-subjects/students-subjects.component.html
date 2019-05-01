@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+        <div class="alert alert-success w-50" role="alert">
+            <h4 class="alert-heading">Assign Students With Subjects</h4>
+      <form #frmref="ngForm" (submit)="assign(frmref)">
+          <mat-form-field>
+              <mat-label>Subjects</mat-label>
+              <mat-select name="subList" multiple ngModel>
+                <mat-option *ngFor="let item of subjects " [value]="item._id">{{item.Name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Students</mat-label>
+                <mat-select name="stdList" multiple ngModel>
+                  <mat-option *ngFor="let item of students " [value]="item._id">{{item.Name}}</mat-option>
+                </mat-select>
+              </mat-form-field><hr>
+        <input type="submit" class="btn btn-primary" value="Assign">
+      </form>
+      </div>
+      <div class="alert alert-warning" role="alert" [textContent]="msg" *ngIf="(msg)">
+         
+      </div>
+  </div>
+</div>
+

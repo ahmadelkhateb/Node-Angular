@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row justify-content-center align-items-center">
+      <div class="alert alert-success w-50" role="alert">
+          <h4 class="alert-heading">Students</h4>
+          <div class="example-container">
+            <mat-form-field>
+              <input matInput placeholder="ID" [(ngModel)]="nstd._id" #idref>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input matInput placeholder="Name" [(ngModel)]="nstd.Name">
+            </mat-form-field>
+
+            <mat-form-field>
+              <input matInput placeholder="Email" [(ngModel)]="nstd.Email">
+            </mat-form-field>
+          </div>
+          <div>
+            <button class="btn btn-success center-block" (click)="getstudentlist()">show</button>
+            <button  *ngIf="idref.disabled==false" class="btn btn-success center-block" (click)="add()">add</button>
+            <button *ngIf="idref.disabled" class="btn btn-primary center-block" (click)="update();idref.disabled=false" >edit</button>
+          </div>
+        </div>  
+
+        <div class="alert alert-warning" role="alert" [textContent]="msg" *ngIf="(msg)">
+         
+        </div>
+    <table class="table table-dark"  *ngIf="students.length > 0">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of students " >
+            <td>{{item._id}}</td>
+            <td>{{item.Name}}</td>
+            <td>{{item.Email}}</td>
+            <td>
+                <button type="button" class="btn btn-danger" (click)="delete(item._id)">delete</button>
+                  </td>
+                  <td>
+                <button type="button" class="btn btn-primary" (click)="edit(item._id,item.Name,item.Email);
+                idref.disabled=true;
+                ">update</button>
+
+            </td>
+          </tr>
+        
+        </tbody>
+      </table>
+      <br>
+      <div class="alert alert-warning" role="alert" *ngIf="(students.length == 0 && clicked==true)">
+        No Students Found
+      </div>
+  </div>
+</div>

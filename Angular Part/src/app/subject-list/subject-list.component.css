@@ -1,0 +1,14 @@
+.example-container {
+    display: -webkit-box;
+    flex-direction: column;
+  }
+  
+  .example-container > * {
+    width: 50%;
+    padding: 10px;
+  }
+
+.alert{
+    margin: auto;
+    text-align: center;
+}

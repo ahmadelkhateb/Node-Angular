@@ -1,0 +1,13 @@
+.example-container {
+    display: -webkit-box;
+    flex-direction: column;
+  }
+  
+  .example-container > * {
+    width: 30%;
+    padding: 10px;
+  }
+  .alert{
+    margin: auto;
+    text-align: center;
+}

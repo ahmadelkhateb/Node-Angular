@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+        <div class="alert alert-success w-50" role="alert">
+            <h4 class="alert-heading">Assign Grades To Students </h4>
+      <mat-form-field>
+          <mat-label>Subjects</mat-label>
+          <mat-select [(ngModel)]="subId" (ngModelChange)="getstdGradeList()">
+            <mat-option *ngFor="let item of subjects" [value]="item._id">{{item.Name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div *ngIf="selected==true">
+            <div *ngFor="let std of studentsGrades">
+              <span>{{std.StudentId.Name}} : </span>
+              <mat-form-field>
+                  <input matInput type="number" placeholder="Grade" #graderef [value]="std.grade">
+              </mat-form-field>
+      
+              <button (click)="addGrade(std.StudentId._id,graderef.value)"
+              class="btn btn-primary">Add</button>
+            </div>
+        </div>
+      </div>
+      
+      <div class="alert alert-warning" role="alert" [textContent]="msg" *ngIf="(msg)">
+         
+      </div>
+  </div>
+</div>

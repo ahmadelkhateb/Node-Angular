@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row justify-content-center align-items-center">
+      <div class="alert alert-success w-50" role="alert">
+          <h4 class="alert-heading">Get Student Details </h4>
+    <mat-form-field>
+        <mat-label>Students</mat-label>
+        <mat-select [(ngModel)]="stdId" (ngModelChange)="getstdGradeList();getstudentDet()">
+          <mat-option *ngFor="let item of students" [value]="item._id">{{item.Name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div *ngIf="selected==true">
+          <table class="table">
+              <tr>
+                  <td>Name</td>
+                  <td>{{studentDet.Name}}</td>
+                </tr>
+                <tr>
+                  <td>Email</td>
+                  <td>{{studentDet.Email}}</td>
+                </tr>
+          </table>
+          <hr>
+          <table class="table">
+              <tr>
+                  <th class="bg-success w50">Subject</th>
+                  <th class="bg-info w50">Grade</th>
+              </tr>
+              <tbody *ngFor="let std of studentsGrades">
+                    <tr>
+                      <td>{{std.SubjectId.Name}} </td>
+                      <td>{{std.grade}}</td>
+                    </tr>
+              </tbody>
+          </table>
+      </div>
+    </div>  
+</div>
+</div>
